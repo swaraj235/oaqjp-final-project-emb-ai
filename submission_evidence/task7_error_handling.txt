@@ -1,0 +1,27 @@
+Task 7: Handling HTTP 400 Error and Invalid Inputs
+
+1. Function Error Handling (`EmotionDetection/emotion_detection.py`):
+```python
+    response = requests.post(url, headers=headers, json=payload)
+
+    if response.status_code == 400:
+        return {
+            "anger": None,
+            "disgust": None,
+            "fear": None,
+            "joy": None,
+            "sadness": None,
+            "dominant_emotion": None
+        }
+```
+
+2. Flask Route Error Handling (`server.py`):
+```python
+    response = emotion_detector(text_to_analyze)
+
+    if response["dominant_emotion"] is None:
+        return "Invalid text! Please try again!"
+```
+
+UI test in Theia:
+Entering blank or invalid text yields: "Invalid text! Please try again!"

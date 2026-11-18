@@ -1,0 +1,6 @@
+Command to run in Theia:
+python3 -c "from EmotionDetection import emotion_detector; print(emotion_detector('I hate working long hours'))"
+
+Expected dominant emotion: 'anger'
+
+[Status: Ready to be run and verified in Theia]

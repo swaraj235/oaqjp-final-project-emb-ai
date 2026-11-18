@@ -1,5 +1,8 @@
-import requests
+"""
+Emotion Detection module using Watson NLP Emotion Predict Service.
+"""
 import json
+import requests
 
 
 def emotion_detector(text_to_analyze):
@@ -10,7 +13,8 @@ def emotion_detector(text_to_analyze):
         text_to_analyze (str): Text to analyze.
 
     Returns:
-        dict: Emotion scores and the dominant emotion.
+        dict: Emotion scores and dominant emotion.
+              Returns None values for HTTP 400 responses.
     """
     url = (
         "https://sn-watson-emotion.labs.skills.network/"
@@ -28,6 +32,16 @@ def emotion_detector(text_to_analyze):
     }
 
     response = requests.post(url, headers=headers, json=payload)
+
+    if response.status_code == 400:
+        return {
+            "anger": None,
+            "disgust": None,
+            "fear": None,
+            "joy": None,
+            "sadness": None,
+            "dominant_emotion": None
+        }
 
     formatted_response = json.loads(response.text)
 
