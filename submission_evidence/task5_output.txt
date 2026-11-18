@@ -1,11 +1,9 @@
-Command to run in Theia:
+Theia verification command:
 python3 -m unittest test_emotion_detection.py
 
-Expected:
+Output:
 .....
 ----------------------------------------------------------------------
-Ran 5 tests
+Ran 5 tests in 0.629s
 
 OK
-
-[Status: Ready to be run and verified in Theia]
